@@ -38,3 +38,9 @@ grand_ma(X):- grand_ma(Y,X),write(Y),nl.
 grand_ma_and_son(X,Y):-
 parents(X,Z),parents(Z,Y),woman(X),man(Y)|
 parents(Y,Z),parents(Z,X),man(X),woman(Y).
+%11.15
+pUp(X,X):- X<10,!.
+pUp(X,P):-
+X1 is X div 10,
+pUp(X1,P1),
+P is P1*(X mod 10).
