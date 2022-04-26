@@ -44,3 +44,12 @@ pUp(X,P):-
 X1 is X div 10,
 pUp(X1,P1),
 P is P1*(X mod 10).
+%11.16
+pDown(X,Y):- pDown(X,Y,X,1),!.
+pDown(K,Y,X1,Y1):- 
+	X1>0,
+	!,
+	Z is Y1*(X1 mod 10),
+	X2 is X1 div 10,
+	pDown(K,Y,X2,Z).
+pDown(_,X,_,Y):- X is Y.
