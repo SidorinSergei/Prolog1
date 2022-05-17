@@ -64,12 +64,12 @@ kol_di(X,Y): - X1 is  X div 10, kol_di(X1,Y1), Y is  Y1.
 
 %18 Найти количество нечетных цифр числа, больших 3.n рек. вверх
 
-kol_di_d(X,Y): - kol_di_d(X,Y,0),!.
-kol_di_d(X,Y,ACC): -X>0, X mod 10>3,
+kol_di_d(X,Y):- kol_di_d(X,Y,0),!.
+kol_di_d(X,Y,ACC):- X>0, X mod 10>3,
           D is (X mod 10), D mod 2 >0,
           X1 - X div 10, ACC1 - ACC+1, kol_di_d(X1,Y,ACC1).
-kol_di_d(X,Y,ACC): -X>0, X1 is X div 10, kol_di_d(X1,Y,ACC).
-kol_di_d(_,X,Y): -X is Y
+kol_di_d(X,Y,ACC):- X>0, X1 is X div 10, kol_di_d(X1,Y,ACC).
+kol_di_d(_,X,Y): -X is Y.
 
 
 %19 Задание 19 Реализовать предикат fib(N,X), где X – число Фибоначчи с
