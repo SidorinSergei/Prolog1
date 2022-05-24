@@ -127,12 +127,12 @@ list_index_min([_H|T],X,Ind,IndMin,Min):- Ind1 is  Ind +1,list_index_min(T,X,Ind
 %1.13 Дан целочисленный массив. Необходимо разместить элементы, рас-
 %положенные до минимального, в конце массива.
 
-присоединить([],L,L):-!.
-присоединить([H|T],L,[H|T1]):- присоединить(T,L,T1).
+prisoedin([],L,L):-!.
+prisoedin([H|T],L,[H|T1]):- prisoedin(T,L,T1).
 
 list_map_do_min(List1,NewList):- list_index_min(List1,IndMin),list_map_do_min(List1,[],NewList,IndMin,1).
-list_map_do_min(List1,List2,NewList,Ind,Ind):- присоединить(List1,List2,NewList),!.
-list_map_do_min([H|T],List2,NewList,IndMin,Ind):- присоединить(List2,[H],NewList2),
+list_map_do_min(List1,List2,NewList,Ind,Ind):- prisoedin(List1,List2,NewList),!.
+list_map_do_min([H|T],List2,NewList,IndMin,Ind):- prisoedin(List2,[H],NewList2),
     Ind1 is Ind+1,list_map_do_min(T,NewList2,NewList,IndMin,Ind1).
 
 %?- list_map_do_min([4,5,6,3,1,3,4,6],X).
@@ -165,7 +165,7 @@ max_in_inter(_,_,B,NewList,Max,Beg):-B=:=Beg,list_Max_El(NewList,Max1),Max is Ma
 
 
 max_in_inter([H|T],A,B,NewList,Max,Beg):-A<Beg,Beg<B,
-    Beg1 is Beg+1,присоединить(NewList,[H],NewList1),
+    Beg1 is Beg+1,prisoedin(NewList,[H],NewList1),
     max_in_inter(T,A,B,NewList1,Max,Beg1).
 
 %1.28 Дан целочисленный массив. Необходимо найти элементы, располо-
@@ -191,5 +191,5 @@ list_el_Fm_Lm([],A,_,Beg,[],_):-A>Beg,fail.
 list_el_Fm_Lm([_|T],A,B,Beg,NewList,X):-A>=Beg,Beg1 is Beg+1,list_el_Fm_Lm(T,A,B,Beg1,NewList,X).
 list_el_Fm_Lm(_,_,B,B,X,X).
 list_el_Fm_Lm([H|T],A,B,Beg,NewList,X):-A<Beg,Beg<B,
-    Beg1 is Beg+1,присоединить(NewList,[H],NewList1),
+    Beg1 is Beg+1,prisoedin(NewList,[H],NewList1),
     list_el_Fm_Lm(T,A,B,Beg1,NewList1,X).
