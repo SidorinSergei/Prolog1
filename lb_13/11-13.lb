@@ -1,0 +1,43 @@
+%1.37 Дан целочисленный массив. вывести индексы элементов, которые
+%меньше своего левого соседа, и количество таких чисел.
+
+%prisoedin([],L,L).
+%prisoedin([H|T],L,[H|T1]):- prisoedin(T,L,T1).
+
+men_lef([H|T],Kol):-men_lef(H,T,0,Kol).
+men_lef(_,[],_,0).
+men_lef(H1,[H2|T],Beg,Kol):-H1>H2,nl,
+    Beg1 is Beg+1,write(Beg1), men_lef(H2,T,Beg1,Kol1), Kol is Kol1 +1.
+men_lef(_,[H2|T],Beg,Kol):-Beg1 is Beg +1, men_lef(H2,T,Beg1,Kol1), Kol is Kol1.
+
+
+% 1.43 Дан целочисленный массив. Необходимо найти количество минимальных
+% элементов.
+
+
+list_min([H|T],Min):-list_min(T,H,Min).
+list_min([],Min,Min).
+list_min([H|T],NowMin,Min):-H<NowMin,NewMin is H,list_min(T,NewMin,Min).
+list_min([_H|T],NowMin,Min):-list_min(T,NowMin,Min).
+
+list_kol_min(List,Kol):-list_min(List,Min),list_kol_min(List,Min,Kol).
+list_kol_min([],_,0).
+list_kol_min([H|T],H,Kol):-list_kol_min(T,H,Kol1),Kol is Kol1+1.
+list_kol_min([_|T],Min,Kol):-list_kol_min(T,Min,Kol1),Kol is Kol1.
+
+%1.59. Дан список. построить новый список из квадратов неотрицательных
+%чисел, меньших 100 и встречающихся в массиве больше 2 раз.
+
+prisoedin([],L,L).
+prisoedin([H|T],L,[H|T1]):- prisoedin(T,L,T1).
+
+povt_el(List,El,Kol):-povt_elem(List,El,Kol).
+povt_elem([],_,0).
+povt_elem([H|T],H,Kol):-povt_elem(T,H,Kol1),Kol is Kol1 +1.
+povt_elem([_|T],Min,Kol):-povt_elem(T,Min,Kol1),Kol is Kol1.
+
+fun(List,NewList):- func(List,NewList).
+func([],[]).
+func([H|T],NewList):-H<100,H>0,povt_el(T,H,Povt),Povt>2, H1 is H*H,
+    func(T,NewList1),prisoedin(NewList1,[H1],NewList).
+func([_|T],NewList):-func(T,NewList).
