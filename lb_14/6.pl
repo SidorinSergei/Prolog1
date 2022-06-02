@@ -36,8 +36,8 @@ allPlacementRepeat(List,K):-
     translateNumToCode(List,[],NL),
     reverse(NL,RNL),
     aPR(RNL,K,[]).
-%---------------------------------------------------------
-%All Permutation +++++++++++++++++++++
+
+%все перестановки
 allpermutat(List,K):-
     tell('C:/Users/Admin/Documents/f.txt'),
     told,
@@ -59,7 +59,7 @@ permutat(List, K, Permut):-
   K1 is K - 1,
   permutat(Tail, K1, [H|Permut]).
 
-%All permutation with repeat by K++++++++++++++++++++
+%все перестановки по K
 aPermR([],_).
 aPermR([H|T],Set):-member(H,Set),aPermR(T,Set).
 
