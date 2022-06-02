@@ -87,7 +87,7 @@ aP(A,N,P):-in_list_exlude(A,El,A1),N1 is N - 1,aP(A1,N1,[El|P]).
 %All combination no repeat by K++++++++++++++++++++++
 
 allCombination(List,K):-
-     tell('C:/Users/Knight/Documents/F#/GitHub/LB6/LB6/SWI-Prolog/LB4/PlacRep.txt'),
+     tell('C:/Users/Admin/Documents/f.txt'),
      told,
      translateNumToCode(List,[],NL),
      reverse(NL,RNL),
@@ -102,7 +102,7 @@ aC([_|T],K,L):-aC(T,K,L).
 % All combination with repeat by K+++++++++++++++++++++++++++++
 
 allCombinationRepeat(List,K):-
-    tell('C:/Users/Knight/Documents/F#/GitHub/LB6/LB6/SWI-Prolog/LB4/PlacRep.txt'),
+    tell('C:/Users/Admin/Documents/f.txt'),
     told,
     translateNumToCode(List,[],NL),
     reverse(NL,RNL),
@@ -115,7 +115,7 @@ aCR([_|T],K,L):-aCR(T,K,L).
 %----------------------------------------------
 %All SubSet Set++++++++++++++++++++++++++++
 allsubset(List):-
-    tell('C:/Users/Knight/Documents/F#/GitHub/LB6/LB6/SWI-Prolog/LB4/PlacRep.txt'),
+    tell('C:/Users/Admin/Documents/f.txt'),
     told,
     translateNumToCode(List,[],NL),
     reverse(NL,RNL),
@@ -170,21 +170,21 @@ readStringToList(Cur_list,List,0):-
         readStringToList(C_l,List,Fl).
 %--------------------------------------End Read File
 checkFile(List):-
-          see('C:/Users/Knight/Documents/F#/GitHub/LB6/LB6/SWI-Prolog/LB4/PlacRep.txt'),!,
+          see('C:/Users/Admin/Documents/f.txt'),!,
     readStringToList(L),
     seen,
     checkNoDubl(List,L).
 
 outFile(L,_TwiceA):-
     checkTwoA(L,0),checkFile(L)->
-    open('C:/Users/Knight/Documents/F#/GitHub/LB6/LB6/SWI-Prolog/LB4/PlacRep.txt',append,Out),
+    open('C:/Users/Admin/Documents/f.txt',append,Out),
     outputStr_symb(L,Out),put(Out,10),close(Out).
 
 aP1(_P,0,P1):-reverse(P1,L1),outFile(L1,1),!,fail.
 aP1(A,N,P):-in_list_exlude(A,El,A1),N1 is N - 1,aP1(A1,N1,[El|P]).
 
 allCombRepTwoA(List,K,_TwiceA):-
-    tell('C:/Users/Knight/Documents/F#/GitHub/LB6/LB6/SWI-Prolog/LB4/PlacRep.txt'),
+    tell('C:/Users/Admin/Documents/f.txt'),
     told,
     K=5 -> (
     translateCharToCode(List,[],NL),
