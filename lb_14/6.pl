@@ -112,7 +112,6 @@ allCombinationRepeat(List,K):-
 aCR(_,0,[]):-!.
 aCR([H|T],K,[H|L]):- K1 is K - 1,aCR([H|T],K1,L).
 aCR([_|T],K,L):-aCR(T,K,L).
-%----------------------------------------------
 %All SubSet Set++++++++++++++++++++++++++++
 allsubset(List):-
     tell('C:/Users/Admin/Documents/f.txt'),
@@ -125,9 +124,8 @@ allsubset(List):-
 aS([],[]).
 aS([H|T],[H|L]):-aS(T,L).
 aS([_H|T],L):-aS(T,L).
-%------------------------------------------------------
-%7 +++++++++++++++
-%Check string exists 2 aa
+%7 
+%проверка строки на наличие 2а
 checkTwoA([],C):- C =:=2,!,true;false.
 checkTwoA([H|T],C):-
     H=97,!,C1 is C + 1,checkTwoA(T,C1);
@@ -168,7 +166,7 @@ readStringToList(Cur_list,List,0):-
 	readString(A,_N,Fl),
         append(Cur_list,[A],C_l),
         readStringToList(C_l,List,Fl).
-%--------------------------------------End Read File
+%конец чтения файла
 checkFile(List):-
           see('C:/Users/Admin/Documents/f.txt'),!,
     readStringToList(L),
