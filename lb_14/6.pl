@@ -69,9 +69,6 @@ allpermRepeat(List, K,L):-
 % All placemetn no repeat by K++++++++++++++++++++++++++
 in_list_exlude([El|T],El,T).
 in_list_exlude([H|T],El,[H|Tail]):-in_list_exlude(T,El,Tail).
-%ñíà÷àëà âûçîâ in_l_e(T,El,Tail), ïîòîì ïèõàåì [H|Tail] çàòåì âûçîâ
-% in_list_exlude([El|T],El,T) ãäå äîïîëíÿåòñÿ [H|Tail] Ò è ïîëó÷ ñïèñ èç
-% îñòàâ ýëåìí
 
 allPlacement(List,K):-
     tell('C:/Users/Admin/Documents/f.txt'),
@@ -83,8 +80,8 @@ allPlacement(List,K):-
 
 aP(_P,0,P1):-reverse(P1,L1),outFile(L1),!,fail.
 aP(A,N,P):-in_list_exlude(A,El,A1),N1 is N - 1,aP(A1,N1,[El|P]).
-%--------------------------------------------
-%All combination no repeat by K++++++++++++++++++++++
+
+%All combination no repeat by K
 
 allCombination(List,K):-
      tell('C:/Users/Admin/Documents/f.txt'),
@@ -98,8 +95,8 @@ allCombination(List,K):-
 aC(_,0,[]):-!.
 aC([H|T],K,[H|L]):- K1 is K - 1,aC(T,K1,L).
 aC([_|T],K,L):-aC(T,K,L).
-%----------------------------------------------
-% All combination with repeat by K+++++++++++++++++++++++++++++
+
+% All combination with repeat by K
 
 allCombinationRepeat(List,K):-
     tell('C:/Users/Admin/Documents/f.txt'),
@@ -112,7 +109,7 @@ allCombinationRepeat(List,K):-
 aCR(_,0,[]):-!.
 aCR([H|T],K,[H|L]):- K1 is K - 1,aCR([H|T],K1,L).
 aCR([_|T],K,L):-aCR(T,K,L).
-%All SubSet Set++++++++++++++++++++++++++++
+%All SubSet Set
 allsubset(List):-
     tell('C:/Users/Admin/Documents/f.txt'),
     told,
@@ -148,7 +145,7 @@ checkNoDubl(L,[H|T]):-
     noRepeatSymbol(L,X,0),!,fail;
     checkNoDubl(L,T).
 
-% Read File Text++++++++++++++
+% Read File Text
 readString(A,N,Flag):- get0(X),
     concatSymbol(X,A,[],N,0,Flag).
 
