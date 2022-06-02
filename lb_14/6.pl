@@ -2,7 +2,7 @@ outputStr_symb([],_Out):-!.
 outputStr_symb([H|Tail],Out):- put(Out,H),outputStr_symb(Tail,Out).
 
 outFile(L):-
-    open('C:/Users/Knight/Documents/F#/GitHub/LB6/LB6/SWI-Prolog/LB4/PlacRep.txt',append,Out),
+    open('C:/Users/Admin/Documents/f.txt',append,Out),
     outputStr_symb(L,Out),put(Out,10),close(Out).
 
 elmInlist([El|_],El).
@@ -23,7 +23,7 @@ aPR(_A,0,ListPerm):-outFile(ListPerm),!,fail.
 aPR(A,N,ListPerm):-elmInlist(A,El),N1 is N-1,aPR(A,N1,[El|ListPerm]).
 
 allPlacementRepeat:-
-    tell('C:/Users/Knight/Documents/F#/GitHub/LB6/LB6/SWI-Prolog/LB4/PlacRep.txt'),
+    tell('C:/Users/Admin/Documents/f.txt'),
     told,
     inputStr(A,_N),
     read(K),
@@ -31,7 +31,7 @@ allPlacementRepeat:-
 
 
 allPlacementRepeat(List,K):-
-    tell('C:/Users/Knight/Documents/F#/GitHub/LB6/LB6/SWI-Prolog/LB4/PlacRep.txt'),
+    tell('C:/Users/Admin/Documents/f.txt'),
     told,
     translateNumToCode(List,[],NL),
     reverse(NL,RNL),
@@ -39,7 +39,7 @@ allPlacementRepeat(List,K):-
 %---------------------------------------------------------
 %All Permutation +++++++++++++++++++++
 allpermutat(List,K):-
-    tell('C:/Users/Knight/Documents/F#/GitHub/LB6/LB6/SWI-Prolog/LB4/PlacRep.txt'),
+    tell('C:/Users/Admin/Documents/f.txt'),
     told,
     translateNumToCode(List,[],NL),
     reverse(NL,RNL),
@@ -47,7 +47,7 @@ allpermutat(List,K):-
 
 
 permutat(_List, 0, Perm):-
-    open('C:/Users/Knight/Documents/F#/GitHub/LB6/LB6/SWI-Prolog/LB4/PlacRep.txt',append,Out),
+    open('C:/Users/Admin/Documents/f.txt',append,Out),
     outputStr_symb(Perm,Out)
     ,put(Out,10)
     ,close(Out)
@@ -74,7 +74,7 @@ in_list_exlude([H|T],El,[H|Tail]):-in_list_exlude(T,El,Tail).
 % îñòàâ ýëåìí
 
 allPlacement(List,K):-
-    tell('C:/Users/Knight/Documents/F#/GitHub/LB6/LB6/SWI-Prolog/LB4/PlacRep.txt'),
+    tell('C:/Users/Admin/Documents/f.txt'),
     told,
     translateNumToCode(List,[],NL),
     reverse(NL,RNL),
