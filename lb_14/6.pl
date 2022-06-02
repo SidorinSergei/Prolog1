@@ -18,7 +18,7 @@ translateNumToCode([],L,L).
 translateNumToCode([H|T],L,L2):-
     number_codes(H,Y),
     translateNumToCode(T,[Y|L],L2).
-%All Placement with Repeat by K+++++++++++++++++++++++++
+%все размещения с повтором по к
 aPR(_A,0,ListPerm):-outFile(ListPerm),!,fail.
 aPR(A,N,ListPerm):-elmInlist(A,El),N1 is N-1,aPR(A,N1,[El|ListPerm]).
 
